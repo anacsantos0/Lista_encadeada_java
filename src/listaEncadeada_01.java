@@ -1,73 +1,21 @@
-public class listaEncadeada {
-    private static No cabeca;
-    private static int tamanho;
-    private static int dados[];
-    private static int tamAtual;
-    protected static int tamMax;
 
-    public void listaEncadeada() {
-        cabeca = null;
+public class listaEncadeada_01 {
+    private No cabeca;
+    private int tamanho;
+
+    public listaEncadeada_01(){
+        cabeca =  null;
         tamanho = 0;
-        tamMax = 100;
-        tamAtual = 0;
-        dados = new int [tamMax];
     }
 
-    public static int[] getDados() {
-        return dados;
-    }
-
-    public static void setDados(int[] dados) {
-        listaEncadeada.dados = dados;
-    }
-
-    public static No getCabeca() {
-        return cabeca;
-    }
-
-    public static void setCabeca(No cabeca) {
-        listaEncadeada.cabeca = cabeca;
-    }
-
-    public static class No{
-        private int conteudo;
-        private No prox;
-        public No(){
-            prox= null;
-        }
-
-        // Métodos get e set
-        public int getConteudo() {
-            return conteudo;
-        }
-
-        public void setConteudo(int conteudo) {
-            this.conteudo = conteudo;
-        }
-
-        public No getProx() {
-            return prox;
-        }
-
-        public void setProx(No prox) {
-            this.prox = prox;
-        }
-
-
-    }
-
-    // Verifica se a Lista está vazia
+    /** Verifica se a Lista está vazia */
     public boolean vazia(){
-        if (tamAtual == 0 )
+        if (tamanho == 0 )
             return true;
         else
             return false;
     }
 
-    public int tamanho_01() {
-        return tamanho;
-    }
-    // ou
     public int tamanho() {
         No p = cabeca;
         int cont = 0;
@@ -78,14 +26,15 @@ public class listaEncadeada {
         return cont;
     }
 
-    //  Obtém o i-ésimo elemento de uma lista
-     //Retorna o valor encontrado.
+    /** Obtém o i-ésimo elemento de uma lista
+     Retorna o valor encontrado. */
     public int elemento (int pos) {
         No aux = cabeca;
         int cont = 1;
         if (vazia()) return -1; // Consulta falhou
         if ((pos < 1) || (pos > tamanho))
             return -1; // Posicao invalida
+
         // Percorre a lista do 1o elemento até pos
         while (cont < pos){
             aux = aux.getProx();
@@ -160,7 +109,7 @@ public class listaEncadeada {
     private boolean insereFimLista(int dado){
         No novoNo = new No();
         novoNo.setConteudo(dado);
-// Procura o final da lista
+        // Procura o final da lista
         No aux = cabeca;
         while(aux.getProx() != null){
             aux = aux.getProx();
@@ -176,12 +125,10 @@ public class listaEncadeada {
      -1 se a posição for inválida ou a lista vazia
      */public int remove(int pos) {
         if (vazia()) return -1; // Lista vazia
-
         // remoção do elemento da cabeça da lista
         if (pos == 1){
             return removeInicioLista();
         }
-
         // remoção em outro lugar da lista
         else{
             return removeNaLista(pos);
@@ -192,13 +139,10 @@ public class listaEncadeada {
     private int removeInicioLista(){
         No p = cabeca;
         int dado = p.getConteudo();
-
         // Retira o 1o elemento da lista (p)
         cabeca = p.getProx();
         tamanho--;
-
         // Sugere ao garbage collector que libere a
-
         // memoria da regiao apontada por p
         p = null;
         return dado;
@@ -217,15 +161,23 @@ public class listaEncadeada {
         if (atual == null)
             return -1;
 
-
         // retira o elemento da lista
         dado = atual.getConteudo();
         antecessor.setProx(atual.getProx());
         tamanho--;
-
         // sugere ao garbage collector que libere a memoria
         // da regiao apontada por p
         atual = null;
         return dado;
     }
+
+    public boolean showList(){
+        System.out.println("\n ------------ LISTA -----------\n");
+        for( int i = 0; i <tamanho;  i++){
+            System.out.println("POSIÇÃO: " + (i+1) + "    =    " + elemento(i+1));
+        }
+        return true;
+    }
+
+
 }
