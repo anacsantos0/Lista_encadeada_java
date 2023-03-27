@@ -31,7 +31,8 @@ public class listaEncadeada_01 {
     public int elemento (int pos) {
         No aux = cabeca;
         int cont = 1;
-        if (vazia()) return -1; // Consulta falhou
+        if (vazia())
+            return -1; // Consulta falhou
         if ((pos < 1) || (pos > tamanho))
             return -1; // Posicao invalida
 
@@ -42,6 +43,16 @@ public class listaEncadeada_01 {
         }
         return aux.getConteudo();
     }
+
+
+    /** Modifica uma posição ja existente. Recebe a posição de um dado e um valor de dado. Faz a substituição do antigo
+     dado em determinada posição pelo novo valor de dado recebido **/
+    /*
+    public int trocaValor(int pos, int dado){
+        for(int i = pos -1; i < tamanho; i ++){
+
+        }
+    }*/
 
     /**Retorna a posição de um elemento pesquisado.
      Retorna -1 caso não seja encontrado */
@@ -98,7 +109,8 @@ public class listaEncadeada_01 {
             aux = aux.getProx();
             cont++;
         }
-        if (aux == null) return false;
+        if (aux == null)
+            return false;
         novoNo.setProx(aux.getProx());
         aux.setProx(novoNo);
         tamanho++;
