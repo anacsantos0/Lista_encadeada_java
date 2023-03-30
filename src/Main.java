@@ -71,6 +71,11 @@ public class Main extends listaEncadeada_01{
 
                         // Modificar o valor do elemento de uma determinada posição da lista
                         case 1:
+                            System.out.println("Insira a posição do elemento a ser modificado: ");
+                            dado = sc.nextInt();
+                            System.out.println("Insira o novo valor do elemento: ");
+                            pos = sc.nextInt();
+                            array.trocaValor(pos, dado);
                             break;
 
                         // Inserir um elemento em uma determinada posição

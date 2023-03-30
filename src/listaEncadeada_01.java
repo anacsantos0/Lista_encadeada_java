@@ -47,12 +47,20 @@ public class listaEncadeada_01 {
 
     /** Modifica uma posição ja existente. Recebe a posição de um dado e um valor de dado. Faz a substituição do antigo
      dado em determinada posição pelo novo valor de dado recebido **/
-    /*
-    public int trocaValor(int pos, int dado){
-        for(int i = pos -1; i < tamanho; i ++){
 
+    public boolean trocaValor(int pos, int dado){
+        if(vazia()){
+            return false;
         }
-    }*/
+        No aux = cabeca;
+        int cout = 1;
+        while(cout < pos){
+            aux = aux.getProx();
+            cout++;
+        }
+        aux.setConteudo(dado);
+        return true;
+    }
 
     /**Retorna a posição de um elemento pesquisado.
      Retorna -1 caso não seja encontrado */
